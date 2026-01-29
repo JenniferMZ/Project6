@@ -1,12 +1,13 @@
 // Project 6 - Creating a Single-Cell Battery Tester
 
-#define newLED 2  //green LED
+#define newLED 2   //green LED
 #define okLED 4    //yellow LED
-#define oldLED 6  //red LED
+#define oldLED 6   //red LED
 
 int analogValue = 0;
 float voltage = 0;
 int ledDelay = 2000;
+
 
 void setup() 
 {
@@ -15,26 +16,27 @@ void setup()
   pinMode(oldLED, OUTPUT);
 }
 
+
 void loop() 
 {
   analogValue = analogRead(0);
-  voltage = 0.0048*analogValue;
+  voltage = 0.0048 * analogValue;
 
-  if(voltage >= 1.6)
+  if( voltage >= 1.5 )
   {
     digitalWrite(newLED, HIGH);
     delay(ledDelay);
     digitalWrite(newLED, LOW);
   }
 
-  else if ((voltage <1.6) && (voltage) > 1.4)
+  else if ( ( voltage < 1.5 ) && ( voltage ) > 1.1 )
   {
     digitalWrite(okLED, HIGH);
     delay(ledDelay);
     digitalWrite(okLED, LOW);
   }
 
-  else if (voltage <= 1.4)
+  else if ( voltage <= 1.1 )
   {
     digitalWrite(oldLED, HIGH);
     delay(ledDelay);
